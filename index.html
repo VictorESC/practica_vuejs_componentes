@@ -29,18 +29,10 @@
             </div>
             <div class="card-group">
                 <div class="card shadow text-center" v-for="item in col.collection.items">
-                    <div class="card-body">
-                        <dl v-for="pelicula in item.data">
-                            <dt>
-                                {{ pelicula.prompt }}
-                            </dt>
-                            <dd>
-                                {{ pelicula.value }}
-                            </dd>
-                        </dl>
-                        <a v-bind:href="item.href" target="_blank" class="btn btn-primary">Ver</a>
-                        <a v-on:click="edit-form" class="btn btn-secondary" style="color:#fff">Editar</a>
-                    </div>                    
+                                         
+                    <div v-if="toggleEditFormVisibility" is="item-data" v-bind:item="item"></div>
+                    <div v-else is="edit-form" v-bind:item="item"></div>
+                                      
                 </div>
             </div>
 
@@ -54,6 +46,7 @@
             <!--
                  TODO: Componente edit-form
             -->
+            
 
         </script>
 
@@ -65,6 +58,22 @@
             <!--
                  TODO: Componente item-data
             -->
+            <div class="card-group">
+                <div class="card shadow text-center">
+                    <div class="card-body">
+                        <dl v-for="pelicula in item.data">
+                            <dt>
+                                {{ pelicula.prompt }}
+                            </dt>
+                            <dd>
+                                {{ pelicula.value }}
+                            </dd>
+                        </dl>
+                        <a v-bind:href="item.href" target="_blank" class="btn btn-primary">Ver</a>
+                        <input type="button" value="Editar" v-on:click="toggleEditFormVisibility" class="btn btn-secondary" style="color:#fff">
+                    </div>                    
+                </div>
+            </div>
 
         </script>
 
@@ -72,9 +81,9 @@
         <!-- TODO: Cargar librería VueJS y archivo js/script.js -->
         <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
         <script src="./js/script.js"></script>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>-->
     </body>
 
 </html>
