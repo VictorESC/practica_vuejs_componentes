@@ -52,12 +52,11 @@
                         <dl v-for="pelicula in item.data">
                             <dt>
                                 {{ pelicula.prompt }}
-                            </dt>
-                            <dd>
-                                {{ pelicula.value }}
-                            </dd>
+                            </dt>                            
+                            <input type='text' v-if ="pelicula.prompt != 'Description'" v-model="pelicula.value">
+                            <textarea type="text" v-else v-model="pelicula.value"></textarea>
                         </dl>
-                        <input type="button" v-on:click="closeForm" value="Editar" class="btn btn-primary" style="color:#fff">
+                        <input type="button" v-on:click="closeForm" value="Cerrar" class="btn btn-primary" style="color:#fff">
                     </div>                    
                 </div>
             </div>
