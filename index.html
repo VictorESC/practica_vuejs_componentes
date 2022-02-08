@@ -46,7 +46,21 @@
             <!--
                  TODO: Componente edit-form
             -->
-            
+            <div class="card-group">
+                <div class="card shadow text-center">
+                    <div class="card-body">
+                        <dl v-for="pelicula in item.data">
+                            <dt>
+                                {{ pelicula.prompt }}
+                            </dt>
+                            <dd>
+                                {{ pelicula.value }}
+                            </dd>
+                        </dl>
+                        <input type="button" v-on:click="closeForm" value="Editar" class="btn btn-primary" style="color:#fff">
+                    </div>                    
+                </div>
+            </div>
 
         </script>
 

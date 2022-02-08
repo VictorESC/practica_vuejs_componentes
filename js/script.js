@@ -41,10 +41,12 @@ var server_data = {
 
 // TODO: Componente edit-form
 Vue.component('edit-form', {
+    template: '#editForm',
 })
 
 // TODO: Componente item-data
 Vue.component('item-data', {
+    template: '#itemData',
 })
 
 // Aplicación VueJS
