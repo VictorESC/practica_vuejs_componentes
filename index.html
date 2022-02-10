@@ -28,12 +28,15 @@
                 <h1 id="title">{{ col.collection.title }}</h1>
             </div>
             <div class="card-group">
-                <div class="card shadow text-center" v-for="item in col.collection.items">
-                                         
-                    <div v-if="toggleEditFormVisibility" is="item-data" v-bind:item="item"></div>
-                    <div v-else is="edit-form" v-bind:item="item"></div>
-                                      
-                </div>
+                <item-data class="card shadow text-center" 
+                        v-for="item in col.collection.items" 
+                        v-if="!peliculasEditar.includes(col.collection.items.indexOf(item))" 
+                        :pelicula="item"
+                        :indice="col.collection.items.indexOf(item)"
+                        :key="col.collection.items.indexOf(item)">
+                </item-data>
+
+                <edit-form v-else :pelicula="item" :indice="col.collection.items.indexOf(item)"></edit-form>
             </div>
 
         </div>
@@ -53,10 +56,18 @@
                             <dt>
                                 {{ pelicula.prompt }}
                             </dt>                            
-                            <input type='text' v-if ="pelicula.prompt != 'Description'" v-model="pelicula.value">
-                            <textarea type="text" v-else v-model="pelicula.value"></textarea>
+                            <input type="text" 
+                                v-if ="pelicula.prompt != 'Description'" 
+                                :value="pelicula.value" 
+                                v-bind:id="pelicula.name+indice"
+                                v-model="pelicula.value">
+                            <textarea type="text" 
+                                v-else 
+                                :value='pelicula.value' 
+                                v-bind:id="pelicula.name+indice" 
+                                v-model="pelicula.value"></textarea>
                         </dl>
-                        <input type="button" v-on:click="closeForm" value="Cerrar" class="btn btn-primary" style="color:#fff">
+                        <input type="button" v-on:click="closeForm(indice)" value="Cerrar" class="btn btn-primary" style="color:#fff">
                     </div>                    
                 </div>
             </div>
@@ -82,8 +93,8 @@
                                 {{ pelicula.value }}
                             </dd>
                         </dl>
-                        <a v-bind:href="item.href" target="_blank" class="btn btn-primary">Ver</a>
-                        <input type="button" value="Editar" v-on:click="toggleEditFormVisibility" class="btn btn-secondary" style="color:#fff">
+                        <a v-bind:href="item.href" class="btn btn-primary">Ver</a>
+                        <input type="button" value="Editar" v-on:click="toggleEditFormVisibility(indice)" class="btn btn-secondary" style="color:#fff">
                     </div>                    
                 </div>
             </div>

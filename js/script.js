@@ -38,21 +38,20 @@ var server_data = {
     }
 };
 
-
 // TODO: Componente edit-form
 Vue.component('edit-form', {
     template: '#editForm',
-    props: {item: Object},
     method: {
-        closeForm: function(){
-            
+        closeForm: function(index)
+        {
+                       
         }
     }
 })
 
 // TODO: Componente item-data
-Vue.component('item-data', {
-    template: '#itemData',
+Vue.component('item-data', {    
+    template: '#itemData',    
 })
 
 // Aplicación VueJS
@@ -60,7 +59,7 @@ Vue.component('item-data', {
 var app = new Vue({
     el: '#app',
     data: {
-        col: server_data
+        col: server_data,
     }
 });
 
