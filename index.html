@@ -49,27 +49,25 @@
             <!--
                  TODO: Componente edit-form
             -->
-            <div class="card-group">
-                <div class="card shadow text-center">
+            <div class="card-group"> 
+                <div class="card shadow text-center">               
                     <div class="card-body">
-                        <dl v-for="pelicula in item.data">
+                        <dl v-for="nota in pelicula.data">
                             <dt>
-                                {{ pelicula.prompt }}
+                                {{ nota.prompt }}
                             </dt>                            
                             <input type="text" 
-                                v-if ="pelicula.prompt != 'Description'" 
-                                :value="pelicula.value" 
-                                v-bind:id="pelicula.name+indice"
-                                v-model="pelicula.value">
+                                v-if ="nota.prompt != 'Description'"
+                                v-bind:id="nota.name+indice"
+                                v-model="nota.value">
                             <textarea type="text" 
                                 v-else 
-                                :value='pelicula.value' 
-                                v-bind:id="pelicula.name+indice" 
-                                v-model="pelicula.value"></textarea>
+                                v-bind:id="nota.name+indice" 
+                                v-model="nota.value"></textarea>
                         </dl>
                         <input type="button" v-on:click="closeForm(indice)" value="Cerrar" class="btn btn-primary" style="color:#fff">
-                    </div>                    
-                </div>
+                    </div> 
+                </div>               
             </div>
 
         </script>
@@ -85,15 +83,15 @@
             <div class="card-group">
                 <div class="card shadow text-center">
                     <div class="card-body">
-                        <dl v-for="pelicula in item.data">
+                        <dl v-for="nota in pelicula.data">
                             <dt>
-                                {{ pelicula.prompt }}
+                                {{ nota.prompt }}
                             </dt>
                             <dd>
-                                {{ pelicula.value }}
+                                {{ nota.value }}
                             </dd>
                         </dl>
-                        <a v-bind:href="item.href" class="btn btn-primary">Ver</a>
+                        <a v-bind:href="pelicula.href" class="btn btn-primary">Ver</a>
                         <input type="button" value="Editar" v-on:click="toggleEditFormVisibility(indice)" class="btn btn-secondary" style="color:#fff">
                     </div>                    
                 </div>
