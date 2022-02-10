@@ -72,7 +72,7 @@ var app = new Vue({
     el: '#app',
     data: {
         col: server_data,
-        
+        peliculasEditar: this.peliculasEditar
     }
 });
 
