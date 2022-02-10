@@ -38,6 +38,8 @@ var server_data = {
     }
 };
 
+var peliculasEditar = []
+
 // TODO: Componente edit-form
 Vue.component('edit-form', {
     template: '#editForm',
